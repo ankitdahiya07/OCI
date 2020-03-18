@@ -1,0 +1,10 @@
+read -p "INSERT YOUR COMPARTMENT OCID: " COMP_OCID 
+for i in `oci bv volume list -c $COMP_OCID|jq -C -r '.data[].id'|sed 's/ /\n/g'` 
+do 
+VAL=`oci compute volume-attachment list -c $COMP_OCID --volume-id $i|jq -C -r '.data[]."lifecycle-state"'` 
+if [ "$VAL" == "ATTACHED" ];then 
+echo -e "$i IS ATTACHED WITH: `oci compute volume-attachment list -c $COMP_OCID --volume-id $i|jq '.data[]."instance-id"'`" 
+else 
+echo "$i NOT ATTACHED WITH ANY INSTANCE" 
+fi 
+done 
