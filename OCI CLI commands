@@ -1,0 +1,4 @@
+oci iam compartment list --all --query "data[*].{compartmentID:id,Name:name}" --output table
+oci compute instance list  -c ocid1.compartment.oc1..aaaaaaaakrhl57ia3havkbu4duxx3vq57j3jeqcgvkvvhn2tawxuwemwcqzq --query "data[*].{InstanceName:\"display-name\",Shape:shape,State:\"lifecycle-state\"}" --output table
+query without json output:-
+oci bv volume-group-backup list -c ocid1.compartment.oc1..aaaaaaaapwcydi7popgfpwlcx5quydunnep4ae26fg7kqyf5sensp2lrgueq --query "data[*].{displayname:\"display-name\",lifecyclestate:\"lifecycle-state\",sizeingbs:\"size-in-gbs\",type:"type"}"
