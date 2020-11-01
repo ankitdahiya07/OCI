@@ -2,3 +2,6 @@ oci iam compartment list --all --query "data[*].{compartmentID:id,Name:name}" --
 oci compute instance list  -c ocid1.compartment.oc1..aaaaaaaakrhl57ia3havkbu4duxx3vq57j3jeqcgvkvvhn2tawxuwemwcqzq --query "data[*].{InstanceName:\"display-name\",Shape:shape,State:\"lifecycle-state\"}" --output table
 query without json output:-
 oci bv volume-group-backup list -c ocid1.compartment.oc1..aaaaaaaapwcydi7popgfpwlcx5quydunnep4ae26fg7kqyf5sensp2lrgueq --query "data[*].{displayname:\"display-name\",lifecyclestate:\"lifecycle-state\",sizeingbs:\"size-in-gbs\",type:"type"}"
+*How to start a stop a VM from OCI-CLI**
+oci compute instance action --instance-id ocid1.instance.oc1.phx.anyhqljtbmtxioqc2o7wuwvm5fe5ut5g2colpopygtfmvo3mok26v6bhwsaa --action=status
+oci compute instance action --instance-id ocid1.instance.oc1.phx.anyhqljtbmtxioqc6lquvrxo67mrhxtjb26tyep5ostgineldlmqowloy4la --action=stop
